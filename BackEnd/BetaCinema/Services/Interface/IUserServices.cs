@@ -19,7 +19,7 @@ namespace BetaCinema.Services.Interface
         ResponseObject<DataResponseToken> Login(Request_Login request);
         IQueryable<DataResponse> GetAllUser();
         Users get_UserById(Request_Id request);
-        ErrorMessage ChangePassword(int userId, Request_ChangePassword request);
+        ErrorMessage ChangePassword(string UserName, Request_ChangePassword request);
 
 
 

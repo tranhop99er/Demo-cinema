@@ -57,6 +57,7 @@ const { isLoading, isError, userInfo, isSuccess} = useSelector((state) => state.
         });
 
         const data = response.data;
+        console.log(data)
         if (data.Status === 200) {
           // Lưu trữ token
           const userJSON = JSON.stringify(data); // lưu dữ liệu người dùng

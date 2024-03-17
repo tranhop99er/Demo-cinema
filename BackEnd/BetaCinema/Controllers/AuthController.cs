@@ -35,22 +35,11 @@ namespace BetaCinema.Controllers
         }
 
         //change Password
-        [HttpPost("/changePassword")]
+        [HttpPut("/changePassword")]
         [Authorize]
-        public IActionResult changePassword([FromBody] Request_ChangePassword request)
+        public IActionResult changePassword(string UserName,[FromBody] Request_ChangePassword request)
         {
-            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userIdString))
-            {
-                return Unauthorized("Ma token khong hop le"); // Trả về 401 thay vì NotFound
-            }
-            if (!int.TryParse(userIdString, out int userId))
-            {
-                return BadRequest("Invalid user ID");
-            }
-            Console.WriteLine($"User ID: {userIdString}");
-
-            var ret = _userServices.ChangePassword(userId, request);
+            var ret = _userServices.ChangePassword(UserName, request);
             switch (ret)
             {
                 case ErrorMessage.ThanhCong:

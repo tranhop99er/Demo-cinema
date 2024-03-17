@@ -76,6 +76,7 @@ const Product = () => {
   const ShowProduct = () => {
     return (
       <>
+      {console.log(data)}
         <div key={data.Id} className="col-md-6">
           <img
             // onClick={handleModalOpen}

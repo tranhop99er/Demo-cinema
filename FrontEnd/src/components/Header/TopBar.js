@@ -60,7 +60,7 @@ const Topbar = () => {
               <NavLink to="/home" className="nav-link text-secondary fw-bold">
                 Lịch chiếu theo rạp
               </NavLink>
-              <NavLink to="/" className="text-secondary fw-bold nav-link">
+              <NavLink to="/products" className="text-secondary fw-bold nav-link">
                 Phim
               </NavLink>
               <NavLink to="/home" className="nav-link text-secondary fw-bold">
@@ -75,7 +75,7 @@ const Topbar = () => {
               <NavLink to="/home" className="nav-link text-secondary fw-bold">
                 Nhượng quyền
               </NavLink>
-              <NavLink to="/home" className="nav-link text-secondary fw-bold">
+              <NavLink to="/login" className="nav-link text-secondary fw-bold">
                 Thành viên
               </NavLink>
               {loginBoolPage ? (
