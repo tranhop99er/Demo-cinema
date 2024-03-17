@@ -1,0 +1,93 @@
+1. Users
+-dang ky
+-xac thuc dang ky tai khoan
+-dang nhap
+-quen mat khau
+-Quan ly quyen va phan quyen nguoi dung
+-sua thong tin nguoi dung
+-xoa nguoi dung
+-loc du lieu va phan trang
+
+1. Dựa vào diagram phân tích xem cần có những chức năng gì
+2. Xây dựng db theo code first
+3. Chức năng đăng ký, xác thực đăng ký tài khoản (gửi mã xác nhận về email)
+4. Đăng nhập, xác thực người dùng (Authentication, Authorization)
+5. Quên mật khẩu, tạo mật khẩu mới, đổi mật khẩu
+6. Lấy tất cả thông tin người dùng, lấy thông tin người dùng theo id
+
+2.Yêu cầu tuần này: 
+1. BackEnd: 
+Hiển thị các bộ phim nổi bật(sắp xếp theo số lượng đặt vé)
+Thêm, sửa, xóa Cinema(Admin)
+Thêm, sửa, xóa Room(Admin)
+Thêm, sửa, xóa Seat(Admin)
+Thêm, sửa, xóa Food(Admin)
+Hiển thị phim theo rạp, phòng, trạng thái ghế trong phòng
+Thêm, sửa, xóa Movie
+
+2. FullStack: ngoài những yêu cầu của backend thì còn
+"- Trang Home: hiển thị loạt phim nổi bật, có thể xem chi tiết từng phim
+và đặt vé
+- Trang quản trị: quản lý thông tin Cinema, Room, Food, Seat"
+
+
+3.Yêu cầu tuần này: 
+BackEnd: Xử lý luồng sau:
+"Chọn phim => Chọn rạp => Chọn phòng 
+=> Chọn suất chiếu, đồ ăn => Tạo hóa đơn (Bill)
+=> thanh toán VNPay
+(dựa vào Promotion để tính giá tiền sau cùng)"
+"CRUD Schedule - kiểm tra và đảm bảo là trong một phòng
+không chiếu đồng thời 2 phim trong một khoảng thời gian giao nhau"
+Sau khi thanh toán thì thông báo được gửi về email của người dùng
+
+
+FullStack
+
+"Cũng xây dựng theo như luồng backend:
+Chọn phim => Hiển thị màn thông tin cơ bản và chọn rạp
+=> Màn chọn phòng => Màn hiển thị danh sách ghế và trạng thái ghế
+=> Màn hiển thị danh sách đồ ăn => Xác nhận đặt và thanh toán
+
+4.Yêu cầu tuần này: 
+BackEnd: 
+Hoàn tất những công việc CRUD các bảng
+Thống kê doanh số của từng rạp theo khoảng thời gian(Admin)
+Thống kê đồ ăn bán chạy trong 7 ngày gần nhất(Admin)
+Quản lý thông tin của người dùng(Admin)
+Hoàn thiện backend về trang web đặt vé xem phim
+
+
+Full: backend
+"- Biểu đồ thống kê doanh số của từng rạp theo khoảng thời gian
+- Biểu đồ thống kê đồ ăn bán chạy nhất trong 7 ngày gần nhất - dựa vào doanh số
+- Màn hình quản lý thông tin người dùng, chỉnh sửa quyền hạn,.....
+- Hoàn thiện trang web đặt vé xem phim"
+
+
+{
+  "userId": 28,
+  "movieId": 333,
+  "cinemaId": 1,
+  "roomId": 1,
+  "scheduleId": 1008,
+  "selectedSeatId": [
+    {
+      "id": 1205
+    },
+    {
+      "id": 1206
+    }
+  ],
+  "selectedFoodId_Quatity": [
+    {
+      "id": 1,
+      "quantity": 3
+    }, 
+    {
+      "id": 3,
+      "quantity": 5
+    }
+  ],
+  "promotionId": 4
+}
