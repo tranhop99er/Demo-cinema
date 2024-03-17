@@ -1,0 +1,26 @@
+.footer {
+  background-color: #343a40;
+  color: white;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer h5 {
+  margin-bottom: 20px;
+}
+
+.footer ul {
+  padding-left: 0;
+}
+
+.list-group-item {
+  list-style-type: none; /* Removes any list-style */
+}
+

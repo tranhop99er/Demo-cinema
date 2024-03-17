@@ -1,0 +1,35 @@
+/* Các quy tắc CSS cho header */
+.appHeader {
+  background-color: #001529;
+  color: #ffffff;
+}
+
+.topHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerLink {
+  /* margin: 0 15px; */
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.headerLink:hover {
+  color: #1890ff;
+}
+
+
+
+.login-form {
+  max-width: 34%;
+  margin: 0 auto; /* Center the form horizontally */
+  margin-top: 100px; /* Adjust as needed */
+}
+
+.list-unstyled {
+  text-decoration: none !important;
+}
