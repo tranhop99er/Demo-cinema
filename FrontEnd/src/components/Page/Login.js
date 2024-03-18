@@ -3,20 +3,23 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { GoogleOutlined, FacebookOutlined } from "@ant-design/icons";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
-
-export let loginBool = false;
+import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../store";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [showModal, setShowModal] = useState(false);
   const handleModalOpen = () => setShowModal(true);
   const handleModalClose = () => setShowModal(false);
-  const navigate = useNavigate()
+
   //Sign in
   const [dataInputLogin, setDataInputLogin] = useState({
-    email: '',
-    password: '',
-    accessToken: ''
-  })
+    email: "",
+    password: "",
+    accessToken: "",
+  });
 
   const [verificationCode, setVerificationCode] = useState("");
   //handle signin
@@ -35,7 +38,6 @@ const Login = () => {
     e.preventDefault();
     if (verificationCodeForget === "123215") {
       console.log("Email quên mật khẩu:", emailForget);
-
     } else {
       console.log("Mã capcha sai. Nhập lại");
     }
@@ -48,25 +50,25 @@ const Login = () => {
     if (handleCheckVerifyCode()) {
       try {
         const { email, password, accessToken } = dataInputLogin;
-        const response = await axios.post(
-          "https://localhost:7016/auth/login",
-          {
-            email,
-            password,
-          }
-        );
+        const response = await axios.post("https://localhost:7016/auth/login", {
+          email,
+          password,
+        });
 
         const data = response.data;
+        // console.log(data);
         if (data.Status === 200) {
           // Lưu trữ token
+          dispatch(userActions.login());
           const userJSON = JSON.stringify(data); // lưu dữ liệu người dùng
           const token = JSON.stringify(data.Data.AccessToken); // lưu token vào để sau lấy dữ liệu sẽ cần phải dùng
           localStorage.setItem("user", userJSON);
+          localStorage.setItem("password", password);
           localStorage.setItem("token", token);
+          localStorage.setItem("userName", data.Data.UserName);
           // Chuyển hướng đến trang chủ
           alert(data.Message);
-          loginBool = true;
-          navigate("/loginsuccess");
+          navigate("/");
         }
       } catch (error) {
         // Xử lý lỗi, ví dụ: hiển thị thông báo lỗi hoặc ghi log
@@ -242,7 +244,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-

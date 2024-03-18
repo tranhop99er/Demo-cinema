@@ -63,7 +63,7 @@ const Register = () => {
                 className="text-center list-unstyled"
                 style={{ width: "50%" }}
               >
-                <NavLink to="/login" className="nav-link">
+                <NavLink to="/Login" className="nav-link">
                   <span>Đăng nhập</span>
                 </NavLink>
               </li>

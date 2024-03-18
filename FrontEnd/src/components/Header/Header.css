@@ -1,5 +1,41 @@
+.appHeader {
+  background-color: #001529;
+  color: #ffffff;
+}
+
+
+
+
+.topHeader {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  padding-right: 14%;
+}
+
 .header {
   height: 20px;
   background-color: #151313 !important;
   color: white !important;
+}
+
+.headerLink {
+  /* margin: 0 15px; */
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.headerLink:hover {
+  color: #1890ff;
+}
+
+.headerDropdown{
+  background-color: #001529 !important;
+}
+
+.dropdown-itemInfo{
+  top: 20px;
+  z-index: 1050 !important;
 }

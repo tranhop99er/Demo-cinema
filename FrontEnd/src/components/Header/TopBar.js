@@ -1,27 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./TopBar.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import betaLogo from "../../assets/betaLogo.jpg";
-import Dropdown from "react-bootstrap/Dropdown";
 import { NavLink, useNavigate } from "react-router-dom";
 import { loginBool } from "../Page/Login";
+import Header from "./Header.js";
 
 const Topbar = () => {
-  const [loginBoolPage, setLoginBoolPage] = useState(loginBool);
+  const [isTop, setIsTop] = useState(true);
   const navigate = useNavigate();
-  const handleSignOut = () => {
-    setLoginBoolPage(false);
-    navigate("/");
-  };
+
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        setIsTop(false);
+      } else {
+        setIsTop(true);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div>
+      <Header />
       <Navbar
         expand="lg"
         className="bg-light shadow-sm nav-bard topBarHeader"
-        style={{ height: "50px" }}
+        style={{ height: "50px", top: isTop ? "20px" : "0px"}}
       >
         <Container>
           <NavLink to="/">
@@ -75,44 +88,9 @@ const Topbar = () => {
               <NavLink to="/home" className="nav-link text-secondary fw-bold">
                 Nhượng quyền
               </NavLink>
-              <NavLink to="/login" className="nav-link text-secondary fw-bold">
+              <NavLink to="/loginUser" className="nav-link text-secondary fw-bold">
                 Thành viên
               </NavLink>
-              {loginBoolPage ? (
-                <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Avatar
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
-                      Thông tin tài khoản
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      Đổi mật khẩu
-                    </Dropdown.Item>
-                    {console.log(loginBoolPage)}
-                    <Dropdown.Item onClick={handleSignOut}>
-                      Đăng xuất
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              ) : (
-                <>
-                  <NavLink
-                    to="/loginUser"
-                    className="nav-link text-secondary fw-bold text-decoration-underline"
-                  >
-                    Đăng nhập
-                  </NavLink>
-                  <NavLink
-                    to="/register"
-                    className="nav-link text-secondary fw-bold text-decoration-underline"
-                  >
-                    Đăng ký
-                  </NavLink>
-                </>
-              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

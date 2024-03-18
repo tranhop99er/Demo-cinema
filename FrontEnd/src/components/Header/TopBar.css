@@ -26,8 +26,7 @@ a{
 }
 
 .topBarHeader{
-    position: fixed !important;
-  /* top: 20px; */
+  position: fixed !important;
   width: 100%;
   z-index: 1000;
 }
