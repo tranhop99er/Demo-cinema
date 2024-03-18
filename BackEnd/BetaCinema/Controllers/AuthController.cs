@@ -36,16 +36,16 @@ namespace BetaCinema.Controllers
 
         //change Password
         [HttpPut("/changePassword")]
-        [Authorize]
-        public IActionResult changePassword(string UserName,[FromBody] Request_ChangePassword request)
+        //[Authorize]
+        public IActionResult changePassword([FromBody] Request_ChangePassword request)
         {
-            var ret = _userServices.ChangePassword(UserName, request);
+            var ret = _userServices.ChangePassword(request);
             switch (ret)
             {
                 case ErrorMessage.ThanhCong:
                     return Ok("Password doi Thanh Cong");
                 case ErrorMessage.Userkhongtontai:
-                    return NotFound("Khong tim thay Id cua users");
+                    return NotFound("Khong tim thay username");
                 case ErrorMessage.Passwordkhongchinhxac:
                     return BadRequest("Password khong chinh xac");
                 case ErrorMessage.Passwordbitrung:

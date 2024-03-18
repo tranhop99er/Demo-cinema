@@ -162,7 +162,7 @@ namespace BetaCinema.Services.Implements
             DataResponse result = _userConverter.EntityToDTO(user);
             return _responseObject.ResponseSuccess("Dang ky tai khoan thanh cong", result);
         }
-        public ErrorMessage ChangePassword(string UserName, Request_ChangePassword request)
+        public ErrorMessage ChangePassword( Request_ChangePassword request)
         {
             using (var checktr = _appDbContext.Database.BeginTransaction())
             {
@@ -170,7 +170,7 @@ namespace BetaCinema.Services.Implements
                 {
                     if (request.OldPassword != request.NewPassword)
                     {
-                        var userCurrent = _appDbContext.users.FirstOrDefault(x => x.Username == UserName);
+                        var userCurrent = _appDbContext.users.FirstOrDefault(x => x.Username == request.UserName);
                         if (userCurrent != null)
                         {
                             bool checkPass = BCryptNet.Verify(request.OldPassword, userCurrent.Password);
