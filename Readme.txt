@@ -20,5 +20,5 @@ Hoàn tất những công việc CRUD các bảng
 
 FontEnd:
 - Giao diện Web xem phim
-- Đăng ký đăng nhập
+- Đăng ký đăng nhập, Đổi mật khẩu
 - Get phim, hiển thị phim
